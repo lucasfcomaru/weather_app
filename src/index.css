@@ -1,0 +1,36 @@
+/* variáveis */
+:root {
+  --font: "";
+  --color1: ;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Poppins", serif;
+  font-weight: 200;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-weight: 800;
+}
+h2 {
+  font-weight: 700;
+}
+h3 {
+  font-weight: 600;
+}
+h4 {
+  font-weight: 500;
+}
+h5 {
+  font-weight: 400;
+}
