@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { WeatherContext } from "../context/WeatherContext";
+// require('dotenv').config();
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -37,7 +38,7 @@ const StyledHeader = styled.header`
 
     & input {
       background-color: #3a3a3a;
-      color: #FFFFFF;
+      color: #ffffff;
       font-weight: 400;
       height: 40px;
       width: 300px;
@@ -50,7 +51,7 @@ const StyledHeader = styled.header`
 
       &:focus {
         background-color: #f5f5f5;
-        color: #3a3a3a;;
+        color: #3a3a3a;
       }
     }
 
@@ -149,7 +150,7 @@ const Header = () => {
     if (e.key === "Enter") {
       try {
         const cidade = inputRef.current.value;
-        const key = "0c6d0ee63e9b2ad54cef19f75205ace8";
+        const key = import.meta.env.VITE_WEATHER_API_KEY;
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${key}&lang=pt_br&units=metric`;
 
         const apiInfo = await axios.get(url);
@@ -173,7 +174,7 @@ const Header = () => {
 
     try {
       const cidade = inputRef.current.value;
-      const key = "0c6d0ee63e9b2ad54cef19f75205ace8";
+      const key = import.meta.env.VITE_WEATHER_API_KEY;
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${key}&lang=pt_br&units=metric`;
 
       const apiInfo = await axios.get(url);
