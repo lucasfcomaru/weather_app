@@ -35,6 +35,22 @@ h5 {
   font-weight: 400;
 }
 
+html, body {
+  height: 100%;
+  margin: 0; /* Remover margens padrões do body */
+}
+
 body {
   background-color: #1a1a1a;
+  height: 100%;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 1300px) {
+  .container {
+    max-width: 90%;
+  }
 }

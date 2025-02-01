@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 import styled from "styled-components";
-import arrowUp from "../assets/arrowUp.svg";
-import arrowDown from "../assets/arrowDown.svg";
+
 
 const StyledWeatherInformations = styled.section`
   background-color: #202020;
@@ -69,6 +68,39 @@ const StyledWeatherInformations = styled.section`
           font-size: 0.875rem;
           color: #ffffff;
           font-weight: 400;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1300px) {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  @media (max-width: 700px) {
+    padding: 40px;
+    #info {
+      width: 100%;
+      #info-data {
+        flex-direction: column;
+        width: 100%;
+        .info-data-container {
+display: flex;
+gap: 10px;
+justify-content: flex-start;
+
+& p{
+
+  font-weight: 600;
+}
         }
       }
     }

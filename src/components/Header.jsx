@@ -120,6 +120,7 @@ const StyledHeader = styled.header`
         background-color: #fab73a;
         color: #ffffff;
         font-weight: 500;
+        border-radius: 0 6px 6px 0;
       }
     }
   }
