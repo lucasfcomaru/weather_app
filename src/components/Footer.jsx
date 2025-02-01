@@ -20,6 +20,7 @@ const StyledP = styled.div`
 
   & a {
     transition: all ease-in-out 0.3s;
+    color: #FFFFFF;
 
     &:visited {
       color: #FFFFFF;
