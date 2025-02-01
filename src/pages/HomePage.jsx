@@ -1,11 +1,13 @@
 import WeatherInformations from "../components/WeatherInformations";
-import Header from "../components/Header";
-
-
+import { WeatherStorage } from "../context/WeatherContext";
 
 const HomePage = () => {
+
   return (
     <>
+      {/* <WeatherStorage> */}
+        <WeatherInformations />
+      {/* </WeatherStorage> */}
     </>
   );
 };

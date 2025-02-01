@@ -1,8 +1,8 @@
-import { createContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import WeatherInformations from "./WeatherInformations";
+import { WeatherContext } from "../context/WeatherContext";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -10,7 +10,7 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   margin-top: 5%;
-  padding: 0 60px;
+  padding: 0;
 
   #logo {
     display: flex;
@@ -36,14 +36,21 @@ const StyledHeader = styled.header`
     align-items: center;
 
     & input {
+      background-color: #3a3a3a;
+      color: #FFFFFF;
+      font-weight: 400;
       height: 40px;
       width: 300px;
       padding: 8px 16px;
       border: none;
       outline: none;
+      border: 1px solid #3a3a3a;
+      border-radius: 6px 0 0 6px;
+      transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 
       &:focus {
         background-color: #f5f5f5;
+        color: #3a3a3a;;
       }
     }
 
@@ -58,6 +65,8 @@ const StyledHeader = styled.header`
       background-color: #fab73a;
       color: #ffffff;
       font-weight: 500;
+      border-radius: 0 6px 6px 0;
+      border: 1px solid #3a3a3a;
       transition: background-color ease-in-out 0.2s;
 
       &:hover {
@@ -116,8 +125,20 @@ const StyledHeader = styled.header`
   }
 `;
 
+const StyledH4 = styled.div`
+  margin-top: 40px;
+  padding: 20px;
+  color: #f5a20a;
+  display: flex;
+  justify-content: center;
+
+  h4 {
+    text-align: center;
+  }
+`;
+
 const Header = () => {
-  const [weather, setWeather] = useState({});
+  const { weather, setWeather } = useContext(WeatherContext);
   const inputRef = useRef();
   const erroRef = useRef(null);
 
@@ -189,9 +210,10 @@ const Header = () => {
           />
           <button onClick={buscarCidade}>Buscar</button>
         </div>
-        <span ref={erroRef} id="erro"></span>
       </StyledHeader>
-      <WeatherInformations weather={weather} />
+      <StyledH4 id="container-erro">
+        <h4 ref={erroRef} id="erro"></h4>
+      </StyledH4>
     </>
   );
 };
