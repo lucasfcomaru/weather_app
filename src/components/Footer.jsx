@@ -1,26 +1,33 @@
 import styled from "styled-components";
 
 const StyledP = styled.div`
-  color: #7a7a7a;
+  color: #000000;
   display: flex;
   justify-content: center;
   margin-top: 40px;
   width: 300px;
   position: fixed;
-  bottom: 2%;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  border-radius: 4px 4px 0 0 ;
+  background-color: #fab73a;
 
-  a {
+  & p {
+    padding: 8px;
+    font-weight: 400;
+  }
+
+  & a {
     transition: all ease-in-out 0.3s;
-  }
 
-  a:visited {
-    color: #7a7a7a;
-  }
+    &:visited {
+      color: #FFFFFF;
+    }
 
-  a:hover {
-    color: #ffffff;
+    &:hover {
+      color: #FFFFFF;
+    }
   }
 
   & span {

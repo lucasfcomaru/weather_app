@@ -97,6 +97,7 @@ const StyledHeader = styled.header`
       display: flex;
       align-items: center;
       width: 100%;
+      box-sizing: border-box;
 
       & input {
         height: 40px;
