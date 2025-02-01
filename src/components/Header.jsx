@@ -3,7 +3,6 @@ import styled from "styled-components";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { WeatherContext } from "../context/WeatherContext";
-// require('dotenv').config();
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -142,6 +141,7 @@ const StyledH4 = styled.div`
 
 const Header = () => {
   const { weather, setWeather } = useContext(WeatherContext);
+  const { weather5Days, setWeather5Days } = useContext(WeatherContext);
   const inputRef = useRef();
   const erroRef = useRef(null);
 
@@ -152,11 +152,15 @@ const Header = () => {
         const cidade = inputRef.current.value;
         const key = import.meta.env.VITE_WEATHER_API_KEY;
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${key}&lang=pt_br&units=metric`;
+        const url5days = `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${key}&lang=pt_br&units=metric`;
 
         const apiInfo = await axios.get(url);
+        const apiInfo5days = await axios.get(url5days);
         setWeather(apiInfo.data);
+        setWeather5Days(apiInfo5days.data);
 
         console.log(apiInfo);
+        console.log("5days:", apiInfo5days);
       } catch (e) {
         console.error("Erro ao buscar dados:", e);
         error = true;
@@ -176,11 +180,15 @@ const Header = () => {
       const cidade = inputRef.current.value;
       const key = import.meta.env.VITE_WEATHER_API_KEY;
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${key}&lang=pt_br&units=metric`;
+      const url5days = `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${key}&lang=pt_br&units=metric`;
 
       const apiInfo = await axios.get(url);
+      const apiInfo5days = await axios.get(url5days);
       setWeather(apiInfo.data);
+      setWeather5Days(apiInfo5days.data);
 
       console.log(apiInfo);
+      console.log("5days:", apiInfo5days);
     } catch (e) {
       console.error("Erro ao buscar dados:", e);
       error = true;
