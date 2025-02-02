@@ -232,7 +232,7 @@ export default function LocationApi() {
 
         //obtém localização através do ip
         const locationResponse = await axios.get(
-          `http://ip-api.com/json/${ipUser}`
+          `https://ip-api.com/json/${ipUser}`
         );
         if (!locationResponse.data.city) {
           throw new Error("Cidade não encontrada!");
