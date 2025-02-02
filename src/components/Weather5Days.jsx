@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 import styled from "styled-components";
+import { theme } from "../theme/Theme";
 
 const StyledCardForecast = styled.div`
   #cards {
@@ -8,13 +9,13 @@ const StyledCardForecast = styled.div`
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 1300px) {
     overflow-x: scroll;
   }
 `;
 
 const StyledForecast = styled.div`
-  background-color: #202020;
+  background-color: ${theme.blackOpacity};
   display: flex;
   flex-direction: column;
   min-width: 220px;
@@ -22,12 +23,28 @@ const StyledForecast = styled.div`
   padding: 40px;
   border-radius: 6px;
   margin-top: 20px;
-  box-shadow: 2px 2px 10px #000000;
+  box-shadow: 2px 2px 10px ${theme.black};
   transition: background-color cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
-  color: #ffff;
+  color: ${theme.white};
 
   &:hover {
-    background-color: #2b2b2b;
+    background-color: ${theme.yellow1};
+  }
+
+  &:hover #day {
+    color: ${theme.grey};
+    font-weight: 400;
+  }
+
+  &:hover #description,
+  &:hover #temp,
+  &:hover #humidity {
+    color: ${theme.black};
+    font-weight: 600;
+  }
+
+  &:hover #info .info-data-container svg {
+    fill: ${theme.black};
   }
 
   & img {
@@ -47,10 +64,10 @@ const StyledForecast = styled.div`
       gap: 10px;
       padding: 8px 12px;
       width: 50;
-      border-bottom: 1px solid #3b3b3b;
+      border-bottom: 1px solid ${theme.grey};
 
       & svg {
-        fill: #fff;
+        fill: ${theme.white};
         width: 20px;
         height: auto;
       }

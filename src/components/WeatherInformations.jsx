@@ -1,22 +1,22 @@
 import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 import styled from "styled-components";
+import { theme } from "../theme/Theme";
 
 const StyledWeatherInformations = styled.section`
-  background-color: #202020;
+  background-color: ${theme.yellow1};
   display: flex;
   padding: 60px 80px;
-  margin-top: 40px;
   border-radius: 6px;
   width: 100%;
   line-height: 2;
   justify-content: space-between;
   align-items: end;
-  box-shadow: 2px 2px 10px #000000;
+  box-shadow: 2px 2px 10px ${theme.black};
   transition: background-color cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 
   &:hover {
-    background-color: #2b2b2b;
+    background-color: ${theme.yellow2};
   }
 
   #name {
@@ -33,12 +33,12 @@ const StyledWeatherInformations = styled.section`
 
       & h3 {
         font-size: 1.2rem;
-        color: #fab73a;
+        color: ${theme.grey};
       }
     }
     h2 {
       font-size: 2.5rem;
-      color: #ffffff;
+      color: ${theme.black};
     }
   }
 
@@ -54,19 +54,19 @@ const StyledWeatherInformations = styled.section`
       .info-data-container {
         display: flex;
         gap: 10px;
-        padding: 12px 20px;
+        padding: 8px 16px;
         border-radius: 6px;
-        box-shadow: 2px 2px 8px #00000060;
+        border: 1px solid ${theme.grey};
         & svg {
-          fill: #fff;
+          fill: ${theme.grey};
           width: 20px;
           height: auto;
         }
 
         & p {
           font-size: 0.875rem;
-          color: #ffffff;
-          font-weight: 400;
+          color: ${theme.grey};
+          font-weight: 500;
         }
       }
     }

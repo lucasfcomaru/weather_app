@@ -114,7 +114,7 @@ const StyledHeader = styled.header`
 const StyledH4 = styled.div`
   margin-top: 40px;
   padding: 20px;
-  color: #f5a20a;
+  color: ${theme.yellow1};
   display: flex;
   justify-content: center;
 

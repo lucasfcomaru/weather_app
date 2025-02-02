@@ -2,9 +2,10 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { WeatherContext } from "../context/WeatherContext";
+import { theme } from "../theme/Theme";
 
 const StyledAviso = styled.div`
-  color: #ffffff;
+  color: ${theme.yellow1};
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -18,8 +19,8 @@ const StyledAviso = styled.div`
   }
 
   .loader {
-    border: 6px solid #2b2b2b;
-    border-top: 6px solid #fab73a;
+    border: 6px solid ${theme.grey};
+    border-top: 6px solid ${theme.yellow1};
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -37,20 +38,19 @@ const StyledAviso = styled.div`
 `;
 
 const StyledWeatherInformations = styled.section`
-  background-color: #202020;
+  background-color: ${theme.yellow1};
   display: flex;
   padding: 60px 80px;
-  margin-top: 40px;
   border-radius: 6px;
   width: 100%;
   line-height: 2;
   justify-content: space-between;
   align-items: end;
-  box-shadow: 2px 2px 10px #000000;
+  box-shadow: 2px 2px 10px ${theme.black};
   transition: background-color cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 
   &:hover {
-    background-color: #2b2b2b;
+    background-color: ${theme.yellow2};
   }
 
   #name {
@@ -67,12 +67,12 @@ const StyledWeatherInformations = styled.section`
 
       & h3 {
         font-size: 1.2rem;
-        color: #fab73a;
+        color: ${theme.grey};
       }
     }
     h2 {
       font-size: 2.5rem;
-      color: #ffffff;
+      color: ${theme.black};
     }
   }
 
@@ -88,19 +88,19 @@ const StyledWeatherInformations = styled.section`
       .info-data-container {
         display: flex;
         gap: 10px;
-        padding: 12px 20px;
+        padding: 8px 16px;
         border-radius: 6px;
-        box-shadow: 2px 2px 8px #00000060;
+        border: 1px solid ${theme.grey};
         & svg {
-          fill: #fff;
+          fill: ${theme.grey};
           width: 20px;
           height: auto;
         }
 
         & p {
           font-size: 0.875rem;
-          color: #ffffff;
-          font-weight: 400;
+          color: ${theme.grey};
+          font-weight: 500;
         }
       }
     }
@@ -147,13 +147,13 @@ const StyledCardForecast = styled.div`
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 1300px) {
     overflow-x: scroll;
   }
 `;
 
 const StyledForecast = styled.div`
-  background-color: #202020;
+  background-color: ${theme.blackOpacity};
   display: flex;
   flex-direction: column;
   min-width: 220px;
@@ -161,12 +161,28 @@ const StyledForecast = styled.div`
   padding: 40px;
   border-radius: 6px;
   margin-top: 20px;
-  box-shadow: 2px 2px 10px #000000;
+  box-shadow: 2px 2px 10px ${theme.black};
   transition: background-color cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
-  color: #ffff;
+  color: ${theme.white};
 
   &:hover {
-    background-color: #2b2b2b;
+    background-color: ${theme.yellow1};
+  }
+
+  &:hover #day {
+    color: ${theme.grey};
+    font-weight: 400;
+  }
+
+  &:hover #description,
+  &:hover #temp,
+  &:hover #humidity {
+    color: ${theme.black};
+    font-weight: 600;
+  }
+
+  &:hover #info .info-data-container svg {
+    fill: ${theme.black};
   }
 
   & img {
@@ -186,10 +202,10 @@ const StyledForecast = styled.div`
       gap: 10px;
       padding: 8px 12px;
       width: 50;
-      border-bottom: 1px solid #3b3b3b;
+      border-bottom: 1px solid ${theme.grey};
 
       & svg {
-        fill: #fff;
+        fill: ${theme.white};
         width: 20px;
         height: auto;
       }
