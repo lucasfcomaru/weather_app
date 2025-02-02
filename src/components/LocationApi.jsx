@@ -242,6 +242,7 @@ export default function LocationApi() {
 
         //obtém dados da localização
         const key = import.meta.env.VITE_WEATHER_API_KEY;
+        console.log(import.meta.env.VITE_GEOLOCATION_API_KEY)
         const weatherNowResponse = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=${locationUser}&appid=${key}&lang=pt_br&units=metric`
         );
