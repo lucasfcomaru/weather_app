@@ -35,10 +35,10 @@ h5 {
   font-weight: 400;
 }
 
-html, body {
+/* html, body {
   height: 100%;
   margin: 0;
-}
+} */
 
 .hidden {
   visibility: hidden;
