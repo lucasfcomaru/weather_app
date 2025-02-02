@@ -231,13 +231,14 @@ export default function LocationApi() {
         const ipUser = IpResponse.data.ip;
 
         //obtém localização através do ip
+        const locationKey = import.meta.env.VITE_GEOLOCATION_API_KEY;
         const locationResponse = await axios.get(
-          `https://ip-api.com/json/${ipUser}`
+          `https://api.ipgeolocation.io/ipgeo?apiKey=${locationKey}&ip=${ipUser}`
         );
         if (!locationResponse.data.city) {
           throw new Error("Cidade não encontrada!");
         }
-        const locationUser = locationResponse.data.city.toLowerCase();
+        const locationUser = locationResponse.data.city;
 
         //obtém dados da localização
         const key = import.meta.env.VITE_WEATHER_API_KEY;
