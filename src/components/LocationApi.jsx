@@ -18,18 +18,22 @@ const StyledAviso = styled.div`
   }
 
   .loader {
-  border: 6px solid #2b2b2b;
-  border-top: 6px solid #fab73a;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
-}
+    border: 6px solid #2b2b2b;
+    border-top: 6px solid #fab73a;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+  }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;
 
 const StyledWeatherInformations = styled.section`
@@ -138,9 +142,14 @@ const StyledWeatherInformations = styled.section`
 // next 5 days
 
 const StyledCardForecast = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  #cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 1100px) {
+    overflow-x: scroll;
+  }
 `;
 
 const StyledForecast = styled.div`
@@ -267,7 +276,6 @@ export default function LocationApi() {
 
         // Atualiza o estado
         setNext5DaysForecast(next5DaysForecast);
-
       } catch (error) {
         console.log("Erro ao obter localização ou IP:", error);
       }
@@ -278,17 +286,17 @@ export default function LocationApi() {
 
   function converterData(date) {
     try {
-        const newDate = new Date(date * 1000);
-        if (isNaN(newDate)) {
-            return "Data inválida"; // Ou outra mensagem de erro
-        }
-        return newDate.toLocaleDateString("pt-BR", {
-            weekday: "long",
-            day: "2-digit",
-        });
-    } catch (error) {
-        console.error("Erro ao converter data:", error);
+      const newDate = new Date(date * 1000);
+      if (isNaN(newDate)) {
         return "Data inválida"; // Ou outra mensagem de erro
+      }
+      return newDate.toLocaleDateString("pt-BR", {
+        weekday: "long",
+        day: "2-digit",
+      });
+    } catch (error) {
+      console.error("Erro ao converter data:", error);
+      return "Data inválida"; // Ou outra mensagem de erro
     }
   }
 
@@ -296,143 +304,142 @@ export default function LocationApi() {
     return (
       <StyledAviso>
         <div class="loader"></div>
-        <p>
-          Carregando sua localização...
-        </p>
+        <p>Carregando sua localização...</p>
       </StyledAviso>
     );
-  } else 
-  if(!weather) {
+  } else if (!weather) {
     return (
-        <>
-      <StyledWeatherInformations
-        className="container"
-        aria-label="Informações climáticas"
-      >
-        <div id="name">
-          <h2>
-            {weatherNow.name}, {weatherNow.sys.country}
-          </h2>
-          <div id="weather-img">
-            <img
-              src={`http://openweathermap.org/img/wn/${weatherNow.weather[0].icon}.png`}
-              alt={weatherNow.weather[0].description}
-            />
-            <h3>{weatherNow.weather[0].description.toUpperCase()}</h3>
-          </div>
-        </div>
-        <div id="info">
-          <div id="info-data">
-            <div className="info-data-container" aria-label="Temperatura">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-thermometer-half"
-                viewBox="0 0 16 16"
-              >
-                <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415" />
-                <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1" />
-              </svg>
-              <p>Temperatura: {weatherNow.main.temp.toFixed(0)}°C</p>
-            </div>
-            <div className="info-data-container" aria-label="Umidade">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-moisture"
-                viewBox="0 0 16 16"
-              >
-                <path d="M13.5 0a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V7.5h-1.5a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V15h-1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5zM7 1.5l.364-.343a.5.5 0 0 0-.728 0l-.002.002-.006.007-.022.023-.08.088a29 29 0 0 0-1.274 1.517c-.769.983-1.714 2.325-2.385 3.727C2.368 7.564 2 8.682 2 9.733 2 12.614 4.212 15 7 15s5-2.386 5-5.267c0-1.05-.368-2.169-.867-3.212-.671-1.402-1.616-2.744-2.385-3.727a29 29 0 0 0-1.354-1.605l-.022-.023-.006-.007-.002-.001zm0 0-.364-.343zm-.016.766L7 2.247l.016.019c.24.274.572.667.944 1.144.611.781 1.32 1.776 1.901 2.827H4.14c.58-1.051 1.29-2.046 1.9-2.827.373-.477.706-.87.945-1.144zM3 9.733c0-.755.244-1.612.638-2.496h6.724c.395.884.638 1.741.638 2.496C11 12.117 9.182 14 7 14s-4-1.883-4-4.267" />
-              </svg>
-              <p>Umidade: {weatherNow.main.humidity.toFixed(0)}%</p>
-            </div>
-            <div
-              className="info-data-container"
-              aria-label="Temperatura máxima"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-arrow-up-short"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"
-                />
-              </svg>
-              <p>Max: {weatherNow.main.temp_max.toFixed(0)}°C</p>
-            </div>
-            <div
-              className="info-data-container"
-              aria-label="Temperatura mínima"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-arrow-down-short"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"
-                />
-              </svg>
-              <p>Min: {weatherNow.main.temp_min.toFixed(0)}°C</p>
+      <>
+        <StyledWeatherInformations
+          className="container"
+          aria-label="Informações climáticas"
+        >
+          <div id="name">
+            <h2>
+              {weatherNow.name}, {weatherNow.sys.country}
+            </h2>
+            <div id="weather-img">
+              <img
+                src={`http://openweathermap.org/img/wn/${weatherNow.weather[0].icon}.png`}
+                alt={weatherNow.weather[0].description}
+              />
+              <h3>{weatherNow.weather[0].description.toUpperCase()}</h3>
             </div>
           </div>
-        </div>
-      </StyledWeatherInformations>
-      <StyledCardForecast className="container">
-      {next5DaysForecast.map((forecast) => (
-        <StyledForecast key={forecast.dt}>
-          <img
-            src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
-            alt={forecast.weather[0].description}
-          />
           <div id="info">
-            <p id="day">{converterData(forecast.dt)}</p>
-            <p id="description">{forecast.weather[0].description}</p>
-            <div className="info-data-container">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-thermometer-half"
-                viewBox="0 0 16 16"
+            <div id="info-data">
+              <div className="info-data-container" aria-label="Temperatura">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-thermometer-half"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415" />
+                  <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1" />
+                </svg>
+                <p>Temperatura: {weatherNow.main.temp.toFixed(0)}°C</p>
+              </div>
+              <div className="info-data-container" aria-label="Umidade">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-moisture"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M13.5 0a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V7.5h-1.5a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V15h-1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5zM7 1.5l.364-.343a.5.5 0 0 0-.728 0l-.002.002-.006.007-.022.023-.08.088a29 29 0 0 0-1.274 1.517c-.769.983-1.714 2.325-2.385 3.727C2.368 7.564 2 8.682 2 9.733 2 12.614 4.212 15 7 15s5-2.386 5-5.267c0-1.05-.368-2.169-.867-3.212-.671-1.402-1.616-2.744-2.385-3.727a29 29 0 0 0-1.354-1.605l-.022-.023-.006-.007-.002-.001zm0 0-.364-.343zm-.016.766L7 2.247l.016.019c.24.274.572.667.944 1.144.611.781 1.32 1.776 1.901 2.827H4.14c.58-1.051 1.29-2.046 1.9-2.827.373-.477.706-.87.945-1.144zM3 9.733c0-.755.244-1.612.638-2.496h6.724c.395.884.638 1.741.638 2.496C11 12.117 9.182 14 7 14s-4-1.883-4-4.267" />
+                </svg>
+                <p>Umidade: {weatherNow.main.humidity.toFixed(0)}%</p>
+              </div>
+              <div
+                className="info-data-container"
+                aria-label="Temperatura máxima"
               >
-                <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415" />
-                <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1" />
-              </svg>
-              <p id="temp">{forecast.main.temp.toFixed(0)}°C</p>
-            </div>
-            <div className="info-data-container">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-moisture"
-                viewBox="0 0 16 16"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-arrow-up-short"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"
+                  />
+                </svg>
+                <p>Max: {weatherNow.main.temp_max.toFixed(0)}°C</p>
+              </div>
+              <div
+                className="info-data-container"
+                aria-label="Temperatura mínima"
               >
-                <path d="M13.5 0a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V7.5h-1.5a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V15h-1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5zM7 1.5l.364-.343a.5.5 0 0 0-.728 0l-.002.002-.006.007-.022.023-.08.088a29 29 0 0 0-1.274 1.517c-.769.983-1.714 2.325-2.385 3.727C2.368 7.564 2 8.682 2 9.733 2 12.614 4.212 15 7 15s5-2.386 5-5.267c0-1.05-.368-2.169-.867-3.212-.671-1.402-1.616-2.744-2.385-3.727a29 29 0 0 0-1.354-1.605l-.022-.023-.006-.007-.002-.001zm0 0-.364-.343zm-.016.766L7 2.247l.016.019c.24.274.572.667.944 1.144.611.781 1.32 1.776 1.901 2.827H4.14c.58-1.051 1.29-2.046 1.9-2.827.373-.477.706-.87.945-1.144zM3 9.733c0-.755.244-1.612.638-2.496h6.724c.395.884.638 1.741.638 2.496C11 12.117 9.182 14 7 14s-4-1.883-4-4.267" />
-              </svg>
-              <p id="humidity">{forecast.main.humidity}%</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-arrow-down-short"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"
+                  />
+                </svg>
+                <p>Min: {weatherNow.main.temp_min.toFixed(0)}°C</p>
+              </div>
             </div>
           </div>
-        </StyledForecast>
-      ))}
-    </StyledCardForecast>
-    </>
+        </StyledWeatherInformations>
+        <StyledCardForecast className="container">
+          <div id="cards">
+            {next5DaysForecast.map((forecast) => (
+              <StyledForecast key={forecast.dt}>
+                <img
+                  src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                  alt={forecast.weather[0].description}
+                />
+                <div id="info">
+                  <p id="day">{converterData(forecast.dt)}</p>
+                  <p id="description">{forecast.weather[0].description}</p>
+                  <div className="info-data-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-thermometer-half"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415" />
+                      <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1" />
+                    </svg>
+                    <p id="temp">{forecast.main.temp.toFixed(0)}°C</p>
+                  </div>
+                  <div className="info-data-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-moisture"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M13.5 0a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V7.5h-1.5a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V15h-1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5zM7 1.5l.364-.343a.5.5 0 0 0-.728 0l-.002.002-.006.007-.022.023-.08.088a29 29 0 0 0-1.274 1.517c-.769.983-1.714 2.325-2.385 3.727C2.368 7.564 2 8.682 2 9.733 2 12.614 4.212 15 7 15s5-2.386 5-5.267c0-1.05-.368-2.169-.867-3.212-.671-1.402-1.616-2.744-2.385-3.727a29 29 0 0 0-1.354-1.605l-.022-.023-.006-.007-.002-.001zm0 0-.364-.343zm-.016.766L7 2.247l.016.019c.24.274.572.667.944 1.144.611.781 1.32 1.776 1.901 2.827H4.14c.58-1.051 1.29-2.046 1.9-2.827.373-.477.706-.87.945-1.144zM3 9.733c0-.755.244-1.612.638-2.496h6.724c.395.884.638 1.741.638 2.496C11 12.117 9.182 14 7 14s-4-1.883-4-4.267" />
+                    </svg>
+                    <p id="humidity">{forecast.main.humidity}%</p>
+                  </div>
+                </div>
+              </StyledForecast>
+            ))}
+          </div>
+        </StyledCardForecast>
+      </>
     );
   }
 }
