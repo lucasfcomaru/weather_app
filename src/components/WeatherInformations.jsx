@@ -2,18 +2,6 @@ import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 import styled from "styled-components";
 
-const StyledAviso = styled.div`
-  color: #FFFFFF;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 0 20px;
-
-  & p {
-    text-align: center;
-  }
-`;
-
 const StyledWeatherInformations = styled.section`
   background-color: #202020;
   display: flex;
@@ -120,15 +108,8 @@ const StyledWeatherInformations = styled.section`
 const WeatherInformations = () => {
   const { weather } = useContext(WeatherContext);
   console.log(weather);
-
-  if (!weather) {
-    return (
-      <StyledAviso>
-        <p>Busque uma cidade para ver as informações.</p>
-      </StyledAviso>
-    );
-  }
-  else {
+  
+  if(weather){ 
     return (
       <StyledWeatherInformations
         className="container"
@@ -148,7 +129,7 @@ const WeatherInformations = () => {
         </div>
         <div id="info">
           <div id="info-data">
-            <div className="info-data-container">
+            <div className="info-data-container" aria-label="Temperatura">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -162,7 +143,7 @@ const WeatherInformations = () => {
               </svg>
               <p>Temperatura: {weather.main.temp.toFixed(0)}°C</p>
             </div>
-            <div className="info-data-container">
+            <div className="info-data-container" aria-label="Umidade">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -175,7 +156,10 @@ const WeatherInformations = () => {
               </svg>
               <p>Umidade: {weather.main.humidity.toFixed(0)}%</p>
             </div>
-            <div className="info-data-container" aria-label="Temperatura máxima">
+            <div
+              className="info-data-container"
+              aria-label="Temperatura máxima"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -191,7 +175,10 @@ const WeatherInformations = () => {
               </svg>
               <p>Max: {weather.main.temp_max.toFixed(0)}°C</p>
             </div>
-            <div className="info-data-container" aria-label="Temperatura mínima">
+            <div
+              className="info-data-container"
+              aria-label="Temperatura mínima"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -212,7 +199,6 @@ const WeatherInformations = () => {
       </StyledWeatherInformations>
     );
   }
-
 };
 
 export default WeatherInformations;
