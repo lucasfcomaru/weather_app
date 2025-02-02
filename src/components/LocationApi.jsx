@@ -12,7 +12,7 @@ const StyledAviso = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  margin-top: 20%;
+  margin-top: 10%;
 
   & p {
   }
@@ -156,7 +156,7 @@ const StyledForecast = styled.div`
   background-color: #202020;
   display: flex;
   flex-direction: column;
-  min-width: 180px;
+  min-width: 220px;
   align-items: center;
   padding: 40px;
   border-radius: 6px;
@@ -213,12 +213,6 @@ const StyledForecast = styled.div`
       font-size: 0.875rem;
     }
   }
-
-  /* @media (max-width: 1300px) {
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
-  } */
 `;
 
 export default function LocationApi() {

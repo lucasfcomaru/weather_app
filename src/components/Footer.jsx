@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-const StyledP = styled.div`
+const StyledFooter = styled.div`
   color: #000000;
   display: flex;
   justify-content: center;
-  margin-top: 40px;
   width: 300px;
   position: fixed;
   bottom: 0;
@@ -39,14 +38,14 @@ const StyledP = styled.div`
 const Footer = () => {
   return (
     <>
-      <StyledP>
+      <StyledFooter>
         <p>
           Developed with ❤{" "}
           <a href="https://github.com/lucasfcomaru/" target="_blank">
             <span>Lucas Comaru</span>
           </a>
         </p>
-      </StyledP>
+      </StyledFooter>
     </>
   );
 };

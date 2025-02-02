@@ -17,7 +17,7 @@ const StyledForecast = styled.div`
   background-color: #202020;
   display: flex;
   flex-direction: column;
-  min-width: 180px;
+  min-width: 220px;
   align-items: center;
   padding: 40px;
   border-radius: 6px;

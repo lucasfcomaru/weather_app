@@ -9,7 +9,7 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 5%;
+  margin-top: 4%;
   padding: 0;
 
   #logo {
