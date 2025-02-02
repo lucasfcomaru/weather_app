@@ -238,7 +238,6 @@ export default function LocationApi() {
           throw new Error("Cidade não encontrada!");
         }
         const locationUser = locationResponse.data.city.toLowerCase();
-        console.log(locationUser);
 
         //obtém dados da localização
         const key = import.meta.env.VITE_WEATHER_API_KEY;
@@ -247,11 +246,6 @@ export default function LocationApi() {
         );
         const weather5daysResponse = await axios.get(
           `https://api.openweathermap.org/data/2.5/forecast?q=${locationUser}&appid=${key}&lang=pt_br&units=metric`
-        );
-        console.log("Resposta da API de clima atual:", weatherNowResponse.data);
-        console.log(
-          "Resposta da API de previsão 5 dias:",
-          weather5daysResponse.data
         );
         setWeatherNow(weatherNowResponse.data);
         setWeather5Days(weather5daysResponse.data);
@@ -266,7 +260,6 @@ export default function LocationApi() {
         }
 
         const next5DaysForecast = Object.values(dailyForecast).slice(1, 6); // Filtra os próximos 5 dias
-        console.log("next5DaysForecast:", next5DaysForecast);
 
         // Atualiza o estado
         setNext5DaysForecast(next5DaysForecast);
@@ -297,7 +290,7 @@ export default function LocationApi() {
   if (!weatherNow) {
     return (
       <StyledAviso>
-        <div class="loader"></div>
+        <div className="loader"></div>
         <p>Carregando sua localização...</p>
       </StyledAviso>
     );

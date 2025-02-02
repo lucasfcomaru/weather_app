@@ -159,8 +159,6 @@ const Header = () => {
         setWeather(apiInfo.data);
         setWeather5Days(apiInfo5days.data);
 
-        console.log(apiInfo);
-        console.log("5days:", apiInfo5days);
       } catch (e) {
         console.error("Erro ao buscar dados:", e);
         error = true;
@@ -187,8 +185,6 @@ const Header = () => {
       setWeather(apiInfo.data);
       setWeather5Days(apiInfo5days.data);
 
-      console.log(apiInfo);
-      console.log("5days:", apiInfo5days);
     } catch (e) {
       console.error("Erro ao buscar dados:", e);
       error = true;

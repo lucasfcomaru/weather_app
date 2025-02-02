@@ -90,8 +90,7 @@ const Weather5Days = () => {
       }
     }
 
-    const next5DaysForecast = Object.values(dailyForecast).slice(1, 6);
-    console.log("forecast", next5DaysForecast);
+    const next5DaysForecastArr = Object.values(dailyForecast).slice(1, 6);
 
     function converterData(date) {
       const newDate = new Date(date.dt * 1000).toLocaleDateString("pt-BR", {
@@ -105,7 +104,7 @@ const Weather5Days = () => {
       <>
         <StyledCardForecast className="container">
           <div id="cards">
-            {next5DaysForecast.map((forecast) => (
+            {next5DaysForecastArr.map((forecast) => (
               <StyledForecast key={forecast.dt}>
                 <img
                   src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
