@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { theme } from "../theme/Theme";
 
 const StyledFooter = styled.div`
-  color: #000000;
+  color: ${theme.yellow3};
   display: flex;
   justify-content: center;
   width: 300px;
@@ -10,7 +11,7 @@ const StyledFooter = styled.div`
   left: 50%;
   transform: translateX(-50%);
   border-radius: 4px 4px 0 0 ;
-  background-color: #fab73a;
+  background-color: ${theme.yellow1};
 
   & p {
     padding: 8px;
@@ -19,14 +20,14 @@ const StyledFooter = styled.div`
 
   & a {
     transition: all ease-in-out 0.3s;
-    color: #FFFFFF;
+    color: ${theme.yellow3};
 
     &:visited {
-      color: #FFFFFF;
+      color: ${theme.yellow3};
     }
 
     &:hover {
-      color: #FFFFFF;
+      color: ${theme.grey};
     }
   }
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { WeatherContext } from "../context/WeatherContext";
+import { theme } from "../theme/Theme";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -18,11 +19,14 @@ const StyledHeader = styled.header`
     gap: 20px;
 
     & h1 {
-      color: #fab73a;
+      color: ${theme.yellow1};
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.2rem;
+      font-size: 6rem;
       transition: color ease-in-out 0.2s;
 
       &:hover {
-        color: #f5a20a;
+        color: ${theme.yellow2};
       }
     }
 
@@ -34,62 +38,62 @@ const StyledHeader = styled.header`
   #search {
     display: flex;
     align-items: center;
+    gap: 10px;
 
     & input {
-      background-color: #3a3a3a;
-      color: #ffffff;
+      background-color: ${theme.grey};
+      color: ${theme.white};
       font-weight: 400;
       height: 40px;
-      width: 300px;
+      width: 400px;
       padding: 8px 16px;
       border: none;
       outline: none;
-      border: 1px solid #3a3a3a;
-      border-radius: 6px 0 0 6px;
+      border: 1px solid ${theme.yellow1};
+      border-radius: 20px;
       transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
 
       &:focus {
-        background-color: #f5f5f5;
-        color: #3a3a3a;
+        background-color: ${theme.white};
+        color: ${theme.grey};
       }
     }
 
     & button {
-      height: 40px;
-      border-radius: 0;
       border: none;
       cursor: pointer;
       display: flex;
       align-items: center;
-      padding: 8px;
-      background-color: #fab73a;
-      color: #ffffff;
+      padding: 12px;
+      background-color: ${theme.yellow1};
+      color: ${theme.grey};
       font-weight: 500;
-      border-radius: 0 6px 6px 0;
-      border: 1px solid #3a3a3a;
+      border-radius: 50%;
+      border: 1px solid ${theme.grey};
       transition: background-color ease-in-out 0.2s;
 
       &:hover {
-        background-color: #f5a20a;
+        background-color: ${theme.yellow2};
+      }
+
+      & svg {
+        width: 20px;
+        height: auto;
       }
     }
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
     gap: 40px;
   }
-  @media (max-width: 400px) {
+
+  @media (max-width: 550px) {
     gap: 20px;
 
     #logo {
       & h1 {
-        color: #fab73a;
-        font-size: 1.5rem;
-      }
-
-      & img {
-        height: 60px;
+        font-size: 4rem;
       }
     }
 
@@ -102,26 +106,6 @@ const StyledHeader = styled.header`
       & input {
         height: 40px;
         padding: 8px 16px;
-        border: none;
-        outline: none;
-
-        &:focus {
-          background-color: #f5f5f5;
-        }
-      }
-
-      & button {
-        height: 40px;
-        border-radius: 0;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        padding: 8px;
-        background-color: #fab73a;
-        color: #ffffff;
-        font-weight: 500;
-        border-radius: 0 6px 6px 0;
       }
     }
   }
@@ -158,7 +142,6 @@ const Header = () => {
         const apiInfo5days = await axios.get(url5days);
         setWeather(apiInfo.data);
         setWeather5Days(apiInfo5days.data);
-
       } catch (e) {
         console.error("Erro ao buscar dados:", e);
         error = true;
@@ -184,7 +167,6 @@ const Header = () => {
       const apiInfo5days = await axios.get(url5days);
       setWeather(apiInfo.data);
       setWeather5Days(apiInfo5days.data);
-
     } catch (e) {
       console.error("Erro ao buscar dados:", e);
       error = true;
@@ -201,7 +183,7 @@ const Header = () => {
     <>
       <StyledHeader className="container">
         <div id="logo">
-          <img src="/logo.png" alt="Logo WeatherApp" />
+          {/* <img src="/logo.png" alt="Logo WeatherApp" /> */}
           <Link to="/">
             <h1>WeatherApp</h1>
           </Link>
@@ -215,7 +197,18 @@ const Header = () => {
             id="cidade"
             placeholder="Digite o nome da cidade"
           />
-          <button onClick={buscarCidade}>Buscar</button>
+          <button onClick={buscarCidade}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+          </button>
         </div>
       </StyledHeader>
       <StyledH4 id="container-erro">
