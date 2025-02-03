@@ -299,7 +299,8 @@ export default function LocationApi() {
           }
         }
 
-        const next5DaysForecast = Object.values(dailyForecast).slice(1, 6); // Filtra os próximos 5 dias
+        // Filtra os próximos 5 dias
+        const next5DaysForecast = Object.values(dailyForecast).slice(0, 6); // testar o slice
 
         // Atualiza o estado
         setNext5DaysForecast(next5DaysForecast);

@@ -130,7 +130,7 @@ const Weather5Days = () => {
       }
     }
 
-    const next5DaysForecastArr = Object.values(dailyForecast).slice(1, 6);
+    const next5DaysForecastArr = Object.values(dailyForecast).slice(0, 6); //testar o slice
 
     function converterData(date) {
       const newDate = new Date(date.dt * 1000).toLocaleDateString("pt-BR", {
