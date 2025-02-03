@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
-import { WeatherContext } from '../context/WeatherContext';
+// import { useContext, useEffect, useState } from 'react';
+// import { WeatherContext } from '../context/WeatherContext';
 
 export let theme = {
     white: "#FFFFFF",
@@ -33,7 +33,7 @@ export let theme = {
 //         theme = {
 //             white: "#FFFFFF",
 //             blue: "#010326",
-//             grey: "#262626",
+//             grey: "#FFFFFF",
 //             black: "#000000",
 //             blackOpacity: "#00000090",
 //             yellow1: "#000",
@@ -45,6 +45,5 @@ export let theme = {
 //     }
 // }
 
-// let toggle = ToggleTheme();
-// console.log(toggle)
+// let theme = ToggleTheme();
 
