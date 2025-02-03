@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../theme/Theme";
 
 const StyledFooter = styled.div`
-  color: ${theme.yellow3};
+  color: ${theme.yellow2};
   display: flex;
   justify-content: center;
   width: 300px;
@@ -11,7 +11,7 @@ const StyledFooter = styled.div`
   left: 50%;
   transform: translateX(-50%);
   border-radius: 4px 4px 0 0 ;
-  background-color: ${theme.yellow1};
+  background-color: ${theme.black};
 
   & p {
     padding: 8px;
@@ -20,14 +20,14 @@ const StyledFooter = styled.div`
 
   & a {
     transition: all ease-in-out 0.3s;
-    color: ${theme.yellow3};
+    color: ${theme.yellow2};
 
     &:visited {
-      color: ${theme.yellow3};
+      color: ${theme.yellow2};
     }
 
     &:hover {
-      color: ${theme.grey};
+      color: ${theme.yellow1};
     }
   }
 

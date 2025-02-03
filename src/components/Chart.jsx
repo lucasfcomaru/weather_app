@@ -26,8 +26,6 @@ const StyledChart = styled.div`
 
 const Chart = ({ weather5Days }) => {
   // verificação para garantir que weather5Days não é null
-
-  console.log("dados recebidos no Chart", weather5Days)
   if (!weather5Days || !weather5Days.list) {
     return <p>Carregando dados do gráfico...</p>;
   }
