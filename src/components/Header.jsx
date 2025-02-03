@@ -86,7 +86,14 @@ const StyledHeader = styled.header`
 
   @media (max-width: 1100px) {
     flex-direction: column;
-    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8%;
+
+    #switch {
+      order: -1;
+    }
   }
 
   @media (max-width: 550px) {
@@ -129,7 +136,7 @@ const Header = () => {
   const { weather5Days, setWeather5Days } = useContext(WeatherContext);
   const inputRef = useRef();
   const erroRef = useRef(null);
- 
+
   async function buscarCidadeKeyUp(e) {
     let error = false;
     if (e.key === "Enter") {
@@ -188,7 +195,9 @@ const Header = () => {
             <h1>WeatherApp</h1>
           </Link>
         </div>
-        <SwitchTheme />
+        <div id="switch">
+          <SwitchTheme />
+        </div>
         <div id="search">
           <input
             onKeyUp={buscarCidadeKeyUp}
