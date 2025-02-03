@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { WeatherContext } from "../context/WeatherContext";
 import { theme } from "../theme/Theme";
+import SwitchTheme from "./SwitchTheme";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -128,7 +129,7 @@ const Header = () => {
   const { weather5Days, setWeather5Days } = useContext(WeatherContext);
   const inputRef = useRef();
   const erroRef = useRef(null);
-
+ 
   async function buscarCidadeKeyUp(e) {
     let error = false;
     if (e.key === "Enter") {
@@ -183,11 +184,11 @@ const Header = () => {
     <>
       <StyledHeader className="container">
         <div id="logo">
-          {/* <img src="/logo.png" alt="Logo WeatherApp" /> */}
           <Link to="/">
             <h1>WeatherApp</h1>
           </Link>
         </div>
+        <SwitchTheme />
         <div id="search">
           <input
             onKeyUp={buscarCidadeKeyUp}

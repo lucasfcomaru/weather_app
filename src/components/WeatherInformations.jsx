@@ -108,7 +108,7 @@ const StyledWeatherInformations = styled.section`
 
 const WeatherInformations = () => {
   const { weather } = useContext(WeatherContext);
-  
+
   if(weather){ 
     return (
       <StyledWeatherInformations
