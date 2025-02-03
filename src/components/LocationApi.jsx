@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { WeatherContext } from "../context/WeatherContext";
 import { theme } from "../theme/Theme";
 import iconSelect from "../functions/functions";
+import Chart from "./Chart";
 
 const StyledAviso = styled.div`
   color: ${theme.yellow1};
@@ -469,6 +470,7 @@ export default function LocationApi() {
             ))}
           </div>
         </StyledCardForecast>
+        {weather5Days && <Chart weather5Days={weather5Days} />}
       </>
     );
   }

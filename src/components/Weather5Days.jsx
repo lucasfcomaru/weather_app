@@ -3,6 +3,7 @@ import { WeatherContext } from "../context/WeatherContext";
 import styled from "styled-components";
 import { theme } from "../theme/Theme";
 import iconSelect from "../functions/functions";
+import Chart from "./Chart";
 
 const StyledCardForecast = styled.div`
   #cards {
@@ -187,6 +188,7 @@ const Weather5Days = () => {
             ))}
           </div>
         </StyledCardForecast>
+        {weather5Days && <Chart weather5Days={weather5Days} />}
       </>
     );
   }
