@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 import styled from "styled-components";
 import { theme } from "../theme/Theme";
+import iconSelect from "../functions/functions";
 
 const StyledCardForecast = styled.div`
   #cards {
@@ -20,12 +21,13 @@ const StyledForecast = styled.div`
   flex-direction: column;
   min-width: 220px;
   align-items: center;
-  padding: 40px;
+  padding: 60px 40px;
   border-radius: 6px;
-  margin-top: 20px;
+  margin-top: 50px;
   box-shadow: 2px 2px 10px ${theme.black};
-  transition: background-color cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
   color: ${theme.white};
+  position: relative;
 
   &:hover {
     background-color: ${theme.yellow1};
@@ -47,9 +49,30 @@ const StyledForecast = styled.div`
     fill: ${theme.black};
   }
 
-  & img {
-    display: block;
+  &:hover .icon {
+      background-color: ${theme.grey};
+    }
+  &:hover img {
+      filter: invert();
+    }
+
+  .icon {
+    background: ${theme.yellow1};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+    padding: 12px;
+    position: absolute;
+    top: -35px;
+
+    & img {
+      display: block;
+      width: 100%;
+    }
   }
 
   #info {
@@ -123,10 +146,12 @@ const Weather5Days = () => {
           <div id="cards">
             {next5DaysForecastArr.map((forecast) => (
               <StyledForecast key={forecast.dt}>
-                <img
-                  src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
-                  alt={forecast.weather[0].description}
-                />
+                <div className="icon">
+                  <img
+                    src={iconSelect(forecast)}
+                    alt={forecast.weather[0].description}
+                  />
+                </div>
                 <div id="info">
                   <p id="day">{converterData(forecast)}</p>
                   <p id="description">{forecast.weather[0].description}</p>

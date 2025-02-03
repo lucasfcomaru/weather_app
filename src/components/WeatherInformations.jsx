@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 import styled from "styled-components";
 import { theme } from "../theme/Theme";
+import iconSelect from "../functions/functions";
 
 const StyledWeatherInformations = styled.section`
   background-color: ${theme.yellow1};
@@ -120,7 +121,7 @@ const WeatherInformations = () => {
           </h2>
           <div id="weather-img">
             <img
-              src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+              src={iconSelect(weather)}
               alt={weather.weather[0].description}
             />
             <h3>{weather.weather[0].description.toUpperCase()}</h3>
