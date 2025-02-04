@@ -13,12 +13,15 @@ export default function iconSelect(forecastDescription) {
     neve: snow,
   };
 
-  const descriptionLower = forecastDescription.weather[0].description.toLowerCase(); // Converte para minúsculas uma vez, para melhor performance
+  // Converte para minúsculas uma vez, para melhor performance
+  const descriptionLower =
+    forecastDescription.weather[0].description.toLowerCase();
 
-for (const icon in imgs) {
-    if (descriptionLower.includes(icon)) { // Lógica corrigida: descrição contém ícone?
-        return imgs[icon]; // Retorna o componente *e adiciona a key*
+  for (const icon in imgs) {
+    // descrição contém ícone?
+    if (descriptionLower.includes(icon)) {
+      return imgs[icon]; // Retorna o componente e adiciona a key
     }
-}
+  }
   return imgs.nuvens; // ícone padrão
 }
