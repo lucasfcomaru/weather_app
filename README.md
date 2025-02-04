@@ -1,4 +1,4 @@
-<img src="./src/assets/banner-readme.jpg"/>
+<img src="./imgGitHub/banner-readme.jpg"/>
 <p align="center">
     <img src="https://img.shields.io/github/repo-size/lucasfcomaru/weather_app?style=for-the-badge" alt="Repo size" title="Repo size"/>
     <img src="https://img.shields.io/github/languages/count/lucasfcomaru/weather_app?style=for-the-badge" alt="Language count" title="Language count"/>
@@ -39,6 +39,12 @@
 ### 📐 Estrutura de pastas
 
 <img src="./imgGitHub/Diagrama de pastas.jpg"/>
+
+### 📱 Telas
+<img src="./imgGitHub/Telas-smartphone.jpg"/>
+<img src="./imgGitHub/Telas-desktop.jpg"/>
+
+
 
 ### 🛠️ Ferramentas utilizadas
 
@@ -85,47 +91,7 @@
 - <b>IPgeolocation:</b> Disponibiliza a localização baseada no IP
 - <b>OpenWeather:</b> Disponibiliza informações meteorológicas
 
-## ☕ Usando o projeto
-
-1. Certifique-se que você tem o NodeJS intalado em sua máquina através do comando no terminal.
-
-```
-node -v
-```
-
-2. faça o download do repositório.
-
-```
-git clone https://github.com/lucasfcomaru/weather_app.git
-```
-
-3. instale as dependências.
-
-```
-npm install
-```
-
-3. Crie um cadastro nas APis abaixo para obter uma chave
-
-```
-https://ipgeolocation.io/
-https://openweathermap.org/
-```
-
-4. Crie as variáveis de ambiente na raiz do projeto com um arquivo .env
-
-```
-VITE_WEATHER_API_KEY=SUA_CHAVE_AQUI
-VITE_GEOLOCATION_API_KEY=SUA_CHAVE_AQUI
-```
-
-5. Execute o comando abaixo e clique no link que aparecerá no terminal
-
-```
-npm run dev
-```
-
-### 🖌️ Estilo dos componentes
+## 🖌️ Estilo dos componentes
 
 <p align="left">
     As cores dos componentes estão armazenadas em um objeto no arquivo Theme.jsx.
@@ -173,6 +139,46 @@ const StyledFooter = styled.div`
   border-radius: 4px 4px 0 0;
   background-color: ${theme.yourColor};
 `;
+```
+
+## ☕ Usando o projeto
+
+1. Certifique-se que você tem o NodeJS intalado em sua máquina através do comando no terminal.
+
+```
+node -v
+```
+
+2. faça o download do repositório.
+
+```
+git clone https://github.com/lucasfcomaru/weather_app.git
+```
+
+3. instale as dependências.
+
+```
+npm install
+```
+
+4. Crie um cadastro nas APis abaixo para obter uma chave
+
+```
+https://ipgeolocation.io/
+https://openweathermap.org/
+```
+
+5. Crie as variáveis de ambiente na raiz do projeto com um arquivo .env
+
+```
+VITE_WEATHER_API_KEY=SUA_CHAVE_AQUI
+VITE_GEOLOCATION_API_KEY=SUA_CHAVE_AQUI
+```
+
+5. Execute o comando abaixo e clique no link que aparecerá no terminal
+
+```
+npm run dev
 ```
 
 ### 🎮 Deploy
