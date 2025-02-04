@@ -28,6 +28,17 @@ const StyledSwitch = styled.div`
     position: absolute;
     left: 28px;
   }
+
+  @media (prefers-color-scheme: light) {
+    border: 2px solid ${theme.grey};
+
+    &:hover .indicador {
+      background-color: ${theme.yellow1}
+    }
+    .indicador {
+    background-color: ${theme.lightGrey};
+    }
+  }
 `;
 
 const SwitchTheme = () => {

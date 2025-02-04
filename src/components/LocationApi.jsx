@@ -6,6 +6,11 @@ import { theme } from "../theme/Theme";
 import iconSelect from "../functions/functions";
 import Chart from "./Chart";
 
+// importão das chaves fora do componente para
+// evitar leituras repetidas durante as renderizações
+const geoLocationKey = import.meta.env.VITE_GEOLOCATION_API_KEY;
+const weatherKey = import.meta.env.VITE_WEATHER_API_KEY;
+
 const StyledAviso = styled.div`
   color: ${theme.yellow1};
   width: 100%;
@@ -16,9 +21,6 @@ const StyledAviso = styled.div`
   align-items: center;
   padding: 0 20px;
   margin-top: 10%;
-
-  & p {
-  }
 
   .loader {
     border: 6px solid ${theme.grey};
@@ -35,6 +37,14 @@ const StyledAviso = styled.div`
     }
     100% {
       transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    color: ${theme.grey};
+    .loader {
+      border: 6px solid ${theme.grey};
+      border-top: 6px solid ${theme.yellow1};
     }
   }
 `;
@@ -271,7 +281,7 @@ export default function LocationApi() {
         const ipUser = IpResponse.data.ip;
 
         //obtém localização através do ip
-        const locationKey = import.meta.env.VITE_GEOLOCATION_API_KEY;
+        const locationKey = geoLocationKey;
         const locationResponse = await axios.get(
           `https://api.ipgeolocation.io/ipgeo?apiKey=${locationKey}&ip=${ipUser}`
         );
@@ -281,7 +291,7 @@ export default function LocationApi() {
         const locationUser = locationResponse.data.city;
 
         //obtém dados da localização
-        const key = import.meta.env.VITE_WEATHER_API_KEY;
+        const key = weatherKey;
         const weatherNowResponse = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=${locationUser}&appid=${key}&lang=pt_br&units=metric`
         );

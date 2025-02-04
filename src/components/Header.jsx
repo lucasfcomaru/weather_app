@@ -117,6 +117,46 @@ const StyledHeader = styled.header`
       }
     }
   }
+
+  @media (prefers-color-scheme: light) {
+    #logo {
+      & h1 {
+        color: ${theme.grey};
+
+        &:hover {
+          color: ${theme.black};
+        }
+      }
+    }
+
+    #search {
+      & input {
+        background-color: ${theme.grey};
+        color: ${theme.white};
+        border: 1px solid ${theme.grey};
+
+        &:focus {
+          background-color: ${theme.white};
+          color: ${theme.grey};
+        }
+      }
+
+      & button {
+        background-color: ${theme.yellow1};
+        color: ${theme.grey};
+        border: 1px solid ${theme.yellow3};
+
+        &:hover {
+          background-color: ${theme.yellow2};
+        }
+
+        & svg {
+          width: 20px;
+          height: auto;
+        }
+      }
+    }
+  }
 `;
 
 const StyledH4 = styled.div`
@@ -128,6 +168,10 @@ const StyledH4 = styled.div`
 
   h4 {
     text-align: center;
+  }
+
+  @media (prefers-color-scheme: light) {
+    color: ${theme.grey};
   }
 `;
 
