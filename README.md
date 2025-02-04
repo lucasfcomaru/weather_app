@@ -179,17 +179,5 @@ const StyledFooter = styled.div`
 
 <p align="left">
     Veja o projeto completo em:
-    <a href="https://digital-store-snowy.vercel.app/"> https://digital-store-snowy.vercel.app/</a>
+    <a href="https://weather-app-pi-self-71.vercel.app/"> https://weather-app-pi-self-71.vercel.app/</a>
 </p>
-
-Criar arquivo com variáveis de ambiente:
-
-```
-echo VITE_WEATHER_API_KEY=SUA_CHAVE_AQUI VITE_GEOLOCATION_API_KEY=SUA_CHAVE_AQUI > .env
-
-```
-
-APIs
-ipify
-ipgeolocation
-Openweather
