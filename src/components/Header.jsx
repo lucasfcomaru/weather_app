@@ -144,7 +144,7 @@ const StyledHeader = styled.header`
       & button {
         background-color: ${theme.yellow1};
         color: ${theme.grey};
-        border: 1px solid ${theme.yellow3};
+        border: 1px solid ${theme.yellow1};
 
         &:hover {
           background-color: ${theme.yellow2};

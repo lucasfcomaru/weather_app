@@ -10,7 +10,7 @@ const StyledFooter = styled.div`
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 4px 4px 0 0 ;
+  border-radius: 4px 4px 0 0;
   background-color: ${theme.black};
 
   & p {
@@ -33,6 +33,23 @@ const StyledFooter = styled.div`
 
   & span {
     font-weight: 600;
+  }
+
+  @media (prefers-color-scheme: light) {
+    color: ${theme.grey};
+    background-color: ${theme.yellow1};
+
+    & a {
+      color: ${theme.grey};
+
+      &:visited {
+        color: ${theme.grey};
+      }
+
+      &:hover {
+        color: ${theme.black};
+      }
+    }
   }
 `;
 

@@ -22,6 +22,11 @@ const StyledChart = styled.div`
     gap: 60px;
     align-items: flex-start;
   }
+
+  @media (prefers-color-scheme: light) {
+    background: ${theme.grey};
+    color: ${theme.white};
+  }
 `;
 
 const Chart = ({ weather5Days }) => {
@@ -51,6 +56,14 @@ const Chart = ({ weather5Days }) => {
     }
   }
 
+  //mudar as cores dinamicamente conforme o tema do usuário
+  const themeLine = window.matchMedia('(prefers-color-scheme: dark)').matches
+  ? theme.black
+  : theme.yellow1;
+  const themeArea = window.matchMedia('(prefers-color-scheme: dark)').matches
+  ? theme.grey
+  : theme.lightGrey;
+
   return (
     <StyledChart className="container">
       <h3>Variação de temperatura para os próximos 5 dias</h3>
@@ -75,10 +88,11 @@ const Chart = ({ weather5Days }) => {
           />
           <Area
             type={"monotone"}
-            stroke={theme.black}
-            fill={theme.grey}
+            stroke={themeLine}
+            strokeWidth={2.5}
+            fill={themeArea}
             dataKey="temp"
-            dot={theme.black}
+            dot={themeLine}
           />
         </AreaChart>
       </ResponsiveContainer>

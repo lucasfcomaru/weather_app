@@ -104,6 +104,44 @@ const StyledWeatherInformations = styled.section`
       }
     }
   }
+
+  @media (prefers-color-scheme: light) {
+    background-color: ${theme.grey};
+
+    &:hover {
+      background-color: ${theme.black};
+    }
+
+    #name {
+      #weather-img {
+        & img {
+          filter: invert();
+        }
+
+        & h3 {
+          color: ${theme.lightGrey};
+        }
+      }
+      h2 {
+        color: ${theme.yellow1};
+      }
+    }
+
+    #info {
+      #info-data {
+        .info-data-container {
+          border: 1px solid ${theme.lightGrey};
+          & svg {
+            fill: ${theme.lightGrey};
+          }
+
+          & p {
+            color: ${theme.lightGrey};
+          }
+        }
+      }
+    }
+  }
 `;
 
 const WeatherInformations = () => {

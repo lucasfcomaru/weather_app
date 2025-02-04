@@ -115,6 +115,51 @@ const StyledForecast = styled.div`
       font-size: 0.875rem;
     }
   }
+  @media (prefers-color-scheme: light) {
+    background-color: ${theme.grey};
+    opacity: 0.7;
+    color: ${theme.white};
+    position: relative;
+
+    &:hover {
+      background-color: ${theme.black};
+      opacity: 1;
+    }
+
+    &:hover #day {
+      color: ${theme.lightGrey};
+      font-weight: 400;
+    }
+
+    &:hover #description,
+    &:hover #temp,
+    &:hover #humidity {
+      color: ${theme.white};
+      font-weight: 600;
+    }
+
+    &:hover #info .info-data-container svg {
+      fill: ${theme.lightGrey};
+    }
+
+    &:hover .icon {
+      background-color: ${theme.yellow1};
+    }
+    .icon {
+      background: ${theme.white};
+    }
+
+    #info {
+
+      .info-data-container {
+        border-bottom: 1px solid ${theme.lightGrey};
+
+        & svg {
+          fill: ${theme.white};
+        }
+      }
+    }
+  }
 `;
 
 const Weather5Days = () => {
